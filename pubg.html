@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شحن شدات ببجي - K✧M Store</title>
+  <style>
+    body {
+      background-color: #0d0d11;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      color: #ffc700;
+      margin-bottom: 20px;
+      border-right: 4px solid #ff5e00;
+      padding-right: 10px;
+    }
+    .charge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .charge-card {
+      background-color: #1a1a24;
+      border: 1px solid #2a2a3a;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+    .charge-card img {
+      max-width: 50px;
+      margin-bottom: 10px;
+    }
+    .charge-card h3 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+    .charge-card .price {
+      font-size: 1.2rem;
+      color: #ffc700;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .charge-card button {
+      background-color: #ff5e00;
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .charge-card button:hover {
+      background-color: #ff7b00;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 class="section-title">الشحن العادي (UC)</h2>
+  
+  <div class="charge-grid">
+    <!-- 60 شدة -->
+    <div class="charge-card">
+      <img src="https://playwallet.bot/fortnite/card-pubg-fg.png" alt="PUBG UC">
+      <div class="info">
+        <h3>60 شدة (UC)</h3>
+        <p class="price">60 جنيه</p>
+        <button onclick="addToCart('60 شدة (UC)', 60)">إضافة إلى العربة</button>
+      </div>
+    </div>
+
+    <!-- 120 شدة -->
+    <div class="charge-card">
+      <img src="https://playwallet.bot/fortnite/card-pubg-fg.png" alt="PUBG UC">
+      <div class="info">
+        <h3>120 شدة (UC)</h3>
+        <p class="price">125 جنيه</p>
+        <button onclick="addToCart('120 شدة (UC)', 125)">إضافة إلى العربة</button>
+      </div>
+    </div>
+
+    <!-- 325 شدة -->
+    <div class="charge-card">
+      <img src="https://playwallet.bot/fortnite/card-pubg-fg.png" alt="PUBG UC">
+      <div class="info">
+        <h3>325 شدة (UC)</h3>
+        <p class="price">260 جنيه</p>
+        <button onclick="addToCart('325 شدة (UC)', 260)">إضافة إلى العربة</button>
+      </div>
+    </div>
+
+    <!-- 660 شدة -->
+    <div class="charge-card">
+      <img src="https://playwallet.bot/fortnite/card-pubg-fg.png" alt="PUBG UC">
+      <div class="info">
+        <h3>660 شدة (UC)</h3>
+        <p class="price">490 جنيه</p>
+        <button onclick="addToCart('660 شدة (UC)', 490)">إضافة إلى العربة</button>
+      </div>
+    </div>
+
+    <!-- 1800 شدة -->
+    <div class="charge-card">
+      <img src="https://playwallet.bot/fortnite/card-pubg-fg.png" alt="PUBG UC">
+      <div class="info">
+        <h3>1800 شدة (UC)</h3>
+        <p class="price">1350 جنيه</p>
+        <button onclick="addToCart('1800 شدة (UC)', 1350)">إضافة إلى العربة</button>
+      </div>
+    </div>
+
+    <!-- 3850 شدة -->
+    <div class="charge-card">
+      <img src="https://playwallet.bot/fortnite/card-pubg-fg.png" alt="PUBG UC">
+      <div class="info">
+        <h3>3850 شدة (UC)</h3>
+        <p class="price">2500 جنيه</p>
+        <button onclick="addToCart('3850 شدة (UC)', 2500)">إضافة إلى العربة</button>
+      </div>
+    </div>
+
+    <!-- 8100 شدة -->
+    <div class="charge-card">
+      <img src="https://playwallet.bot/fortnite/card-pubg-fg.png" alt="PUBG UC">
+      <div class="info">
+        <h3>8100 شدة (UC)</h3>
+        <p class="price">4850 جنيه</p>
+        <button onclick="addToCart('8100 شدة (UC)', 4850)">إضافة إلى العربة</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(productName, price) {
+      cart.push({ name: productName, price: price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(productName + " تم إضافتها للعربة!");
+    }
+  </script>
+
+</body>
+</html>

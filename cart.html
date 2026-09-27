@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلة التسوق - K✧M Store</title>
+  <style>
+    body {
+      background-color: #0d0d11;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      color: #ffc700;
+      margin-bottom: 20px;
+      border-right: 4px solid #ff5e00;
+      padding-right: 10px;
+    }
+    .cart-items {
+      display: grid;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .cart-item {
+      background-color: #1a1a24;
+      border: 1px solid #2a2a3a;
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    .item-info .price {
+      color: #ffc700;
+      font-weight: bold;
+    }
+    .remove-btn {
+      background-color: #ff3333;
+      color: #ffffff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .total-section {
+      background-color: #15151e;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    .total-price {
+      color: #ffc700;
+      font-weight: bold;
+    }
+    .checkout-btn {
+      background-color: #ff5e00;
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 class="section-title">سلة التسوق</h2>
+  
+  <div class="cart-items" id="cartItems">
+    <!-- المنتجات هتظهر هنا -->
+  </div>
+
+  <div class="total-section">
+    الإجمالي: <span class="total-price" id="totalPrice">0 جنيه</span>
+    <button class="checkout-btn" onclick="checkout()">إتمام الطلب</button>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function renderCart() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const totalPriceContainer = document.getElementById('totalPrice');
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>العربة فارغة حالياً.</p>';
+        totalPriceContainer.innerText = '0 جنيه';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        itemElement.innerHTML = `
+          <div class="item-info">
+            <h3>${item.name}</h3>
+            <p class="price">${item.price} جنيه</p>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${index})">حذف</button>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+      });
+
+      totalPriceContainer.innerText = total + ' جنيه';
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('العربة فارغة!');
+        return;
+      }
+      alert('تم إتمام الطلب بنجاح! سيتم تحويلك للواتساب.');
+      window.location.href = "https://wa.me/201122511179";
+
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>

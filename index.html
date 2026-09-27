@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K✧M TopUp | أسرع متجر لشحن الألعاب</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0d0d11;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #ff5e00;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff5e00;
+            text-shadow: 0 0 10px rgba(255, 94, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cart-icon {
+            font-size: 0.9em;
+        }
+
+        .subtitle {
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffc700;
+            border-right: 4px solid #ff5e00;
+            padding-right: 10px;
+        }
+
+        /* شبكة الأقسام */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .game-card {
+            background-color: #1a1a24;
+            border: 1px solid #2a2a3a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .game-card:hover {
+            border-color: #ff5e00;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 94, 0, 0.2);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        .game-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .charge-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .charge-card {
+            background-color: #1a1a24;
+            border: 1px solid #2a2a3a;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .charge-card img {
+            max-width: 50px;
+            margin-bottom: 10px;
+        }
+
+        .charge-card h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .charge-card .price {
+            font-size: 1.2rem;
+            color: #ffc700;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .charge-card button {
+            background-color: #ff5e00;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .charge-card button:hover {
+            background-color: #ff7b00;
+        }
+
+        /* طرق الدفع */
+        .payment-methods {
+            background-color: #15151e;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .payment-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .payment-item {
+            background: #252533;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffc700;
+        }
+
+        /* زرار الواتساب البيضاوي */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 14px 32px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1ebd56;
+            transform: scale(1.05);
+        }
+
+        .cta-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .top-ad-expandable {
+            background-color: #000;
+            text-align: center;
+            position: relative;
+            border-bottom: 2px solid #ff5e00;
+        }
+
+        .ad-content-wrapper img {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ad-controls {
+            background-color: #ff5e00;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .expand-toggle {
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .hidden-ad {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-ad-expandable">
+        <div class="ad-content-wrapper" id="topAdContent">
+            <img src="https://i.ibb.co/L89kY3y/pubg-banner.jpg" alt="إعلان">
+        </div>
+        <div class="ad-controls">
+            <span class="expand-toggle" onclick="toggleTopAd()">&#9650;</span>
+        </div>
+    </div>
+
+    <header>
+        <a href="cart.html" style="text-decoration: none; color: inherit;">
+            <div class="logo">
+                <span class="cart-icon">&#128722;</span> K✧M TopUp
+            </div>
+        </a>
+        <div class="subtitle">أسرع متجر لشحن الألعاب والخدمات الرقمية</div>
+    </header>
+
+    <h2 class="section-title">الأقسام المتاحة</h2>
+    
+    <div class="games-grid">
+        <a href="pubg.html" class="game-card">
+            <img src="https://i.ibb.co/BKLT1cg6/FB-IMG-1790505280927.jpg" alt="PUBG Mobile">
+            <h3 class="game-title">PUBG Mobile</h3>
+            <p style="color: #888;">شحن عن طريق الـ ID UC</p>
+        </a>
+
+        <div class="game-card">
+            <img src="https://i.ibb.co/c97s3pr/images.jpg" alt="Free Fire">
+            <h3 class="game-title">Free Fire</h3>
+            <p style="color:#888;">شحن جواهر فوري</p>
+        </div>
+
+        <div class="game-card">
+            <img src="https://i.ibb.co/84n5K9Hv/images-1.jpg" alt="FC Mobile">
+            <h3 class="game-title">FC Mobile</h3>
+            <p style="color:#888;">شحن FC Points</p>
+        </div>
+
+        <div class="game-card">
+            <img src="https://i.ibb.co/vCVvwMm8/images-2.jpg" alt="eFootball">
+            <h3 class="game-title">eFootball</h3>
+            <p style="color:#888;">شحن كوينز</p>
+        </div>
+      
+        <a href="tiktok.html" class="game-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC3A2t5BL9I6i4crYE2x03Xm0ltrkE5gecNMmfcRxceA&s=10" alt="TikTok Coins">
+            <h3 class="game-title">TikTok Coins</h3>
+            <p style="color: #888;">شحن سريع وآمن</p>
+        </a>
+    </div>
+
+    <div class="payment-methods">
+        <h2 class="section-title" style="margin-bottom:10px;">طرق الدفع المتاحة</h2>
+        <ul class="payment-list">
+            <li class="payment-item">فودافون كاش</li>
+            <li class="payment-item">اتصالات كاش</li>
+            <li class="payment-item">أورنج / وي كاش</li>
+            <li class="payment-item">InstaPay (إنستا باي)</li>
+            <li class="payment-item">فوري / الكارت الأصفر</li>
+        </ul>
+    </div>
+
+    <div class="cta-container">
+        <a href="https://wa.me/201122511179" class="whatsapp-btn" target="_blank">
+            💬 تواصل معنا عبر WhatsApp للشحن
+        </a>
+    </div>
+
+    <script>
+        function toggleTopAd() {
+            const content = document.getElementById('topAdContent');
+            const toggleBtn = document.querySelector('.expand-toggle');
+            content.classList.toggle('hidden-ad');
+            toggleBtn.style.transform = content.classList.contains('hidden-ad') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(productName + " تم إضافتها للعربة!");
+        }
+    </script>
+</body>
+</html>
