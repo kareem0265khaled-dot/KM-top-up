@@ -3,56 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>شحن مجوهرات فري فاير - K✧M Store</title>
+  <title>شحن جواهر فري فاير - K✧M Store</title>
   <style>
     body {
       background-color: #0d0d11;
       color: #ffffff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
-    }
-    .section-title {
-      font-size: 1.5rem;
-      color: #ffc700;
-      margin-bottom: 20px;
-      border-right: 4px solid #ff5e00;
-      padding-right: 10px;
+      padding: 10px;
+      margin: 0;
     }
     .charge-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 20px;
+      gap: 10px;
+      margin-top: 15px;
     }
     .charge-card {
       background-color: #1a1a24;
       border: 1px solid #2a2a3a;
       border-radius: 12px;
-      padding: 15px;
+      padding: 10px 8px;
       text-align: center;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      aspect-ratio: 1 / 1;
+      box-sizing: border-box;
+    }
+    .charge-card:hover {
+      border-color: #ff5e00;
     }
     .charge-card img {
-      max-width: 50px;
-      margin-bottom: 10px;
+      max-width: 40px;
+      height: auto;
+      margin-bottom: 2px;
     }
     .charge-card h3 {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       color: #ffffff;
-      margin-bottom: 5px;
+      margin: 2px 0;
     }
     .charge-card .price {
-      font-size: 1.2rem;
+      font-size: 0.95rem;
       color: #ffc700;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin: 2px 0;
     }
     .charge-card button {
       background-color: #ff5e00;
       color: #ffffff;
       border: none;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 6px 8px;
+      border-radius: 6px;
       font-weight: bold;
+      font-size: 0.8rem;
       width: 100%;
       cursor: pointer;
       transition: 0.3s;
@@ -61,7 +67,7 @@
       background-color: #ff7b00;
     }
 
-    /* === ستايل الـ Modal === */
+    /* === ستايل النافذة المنبثقة (Modal) === */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -74,124 +80,203 @@
       align-items: center;
       z-index: 1000;
     }
-    .modal-content {
-      background-color: #1a1a24;
-      border: 1px solid #ff5e00;
+    .modal-box {
+      background: #1a1a24;
+      border: 1px solid #2a2a3a;
       border-radius: 12px;
-      padding: 25px;
+      padding: 20px;
       text-align: center;
+      max-width: 320px;
       width: 85%;
-      max-width: 350px;
-      box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
-    .modal-content p {
-      font-size: 1.1rem;
+    .modal-box p {
+      font-size: 1rem;
+      font-weight: bold;
       margin-bottom: 20px;
-      color: #ffffff;
+      color: #fff;
     }
     .modal-buttons {
       display: flex;
       gap: 10px;
+      justify-content: center;
     }
     .modal-btn {
-      flex: 1;
-      padding: 10px;
+      padding: 10px 15px;
       border-radius: 8px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
       text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+      flex: 1;
+      text-align: center;
     }
     .btn-continue {
       background-color: #2a2a3a;
-      color: #ffffff;
+      color: #fff;
     }
     .btn-cart {
       background-color: #ff5e00;
-      color: #ffffff;
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
-  <h2 class="section-title">شحن جوهر فري فاير (Diamonds)</h2>
-  
   <div class="charge-grid">
-    <!-- 50 Diamond -->
+    <!-- كارت 1 -->
     <div class="charge-card">
-      <img src="103898.png" alt="Free Fire Diamond">
-      <div class="info">
-        <h3>50 Diamond</h3>
-        <p class="price">35 جنيه</p>
-        <button onclick="addToCart('50 Diamond', 35)">إضافة إلى العربة</button>
-      </div>
+      <img src="103898.png" alt="50 Diamond">
+      <h3>50 Diamond</h3>
+      <p class="price">35 جنيه</p>
+      <button onclick="addToCart('50 Diamond', 35)">إضافة إلى العربة</button>
     </div>
-
-    <!-- 100 Diamond -->
+    <!-- كارت 2 -->
     <div class="charge-card">
-      <img src="103898.png" alt="Free Fire Diamond">
-      <div class="info">
-        <h3>100 Diamond</h3>
-        <p class="price">70 جنيه</p>
-        <button onclick="addToCart('100 Diamond', 70)">إضافة إلى العربة</button>
-      </div>
+      <img src="https://i.ibb.co/LzVmsWVs/103898-1.png" alt="100 Diamond">
+      <h3>100 Diamond</h3>
+      <p class="price">70 جنيه</p>
+      <button onclick="addToCart('100 Diamond', 70)">إضافة إلى العربة</button>
     </div>
-
-    <!-- 210 Diamond -->
+    <!-- كارت 3 -->
     <div class="charge-card">
-      <img src="103898.png" alt="Free Fire Diamond">
-      <div class="info">
-        <h3>210 Diamond</h3>
-        <p class="price">120 جنيه</p>
-        <button onclick="addToCart('210 Diamond', 120)">إضافة إلى العربة</button>
-      </div>
+      <img src="103898.png" alt="210 Diamond">
+      <h3>210 Diamond</h3>
+      <p class="price">120 جنيه</p>
+      <button onclick="addToCart('210 Diamond', 120)">إضافة إلى العربة</button>
     </div>
-
-    <!-- 310 Diamond -->
+    <!-- كارت 4 -->
     <div class="charge-card">
-      <img src="103898.png" alt="Free Fire Diamond">
-      <div class="info">
-        <h3>310 Diamond</h3>
-        <p class="price">175 جنيه</p>
-        <button onclick="addToCart('310 Diamond', 175)">إضافة إلى العربة</button>
-      </div>
+      <img src="103898.png" alt="310 Diamond">
+      <h3>310 Diamond</h3>
+      <p class="price">175 جنيه</p>
+      <button onclick="addToCart('310 Diamond', 175)">إضافة إلى العربة</button>
     </div>
-
-    <!-- 520 Diamond -->
+    <!-- كارت 5 -->
     <div class="charge-card">
-      <img src="103898.png" alt="Free Fire Diamond">
-      <div class="info">
-        <h3>520 Diamond</h3>
-        <p class="price">270 جنيه</p>
-        <button onclick="addToCart('520 Diamond', 270)">إضافة إلى العربة</button>
-      </div>
+      <img src="103898.png" alt="420 Diamond">
+      <h3>420 Diamond</h3>
+      <p class="price">230 جنيه</p>
+      <button onclick="addToCart('420 Diamond', 230)">إضافة إلى العربة</button>
     </div>
-
-    <!-- 1060 Diamond -->
+    <!-- كارت 6 -->
     <div class="charge-card">
-      <img src="103898.png" alt="Free Fire Diamond">
-      <div class="info">
-        <h3>1060 Diamond</h3>
-        <p class="price">530 جنيه</p>
-        <button onclick="addToCart('1060 Diamond', 530)">إضافة إلى العربة</button>
-      </div>
+      <img src="103898.png" alt="520 Diamond">
+      <h3>520 Diamond</h3>
+      <p class="price">270 جنيه</p>
+      <button onclick="addToCart('520 Diamond', 270)">إضافة إلى العربة</button>
     </div>
-
-    <!-- 2200 Diamond -->
+    <!-- كارت 7 -->
     <div class="charge-card">
-      <img src="103898.png" alt="Free Fire Diamond">
-      <div class="info">
-        <h3>2200 Diamond</h3>
-        <p class="price">1060 جنيه</p>
-        <button onclick="addToCart('2200 Diamond', 1060)">إضافة إلى العربة</button>
-      </div>
+      <img src="103898.png" alt="620 Diamond">
+      <h3>620 Diamond</h3>
+      <p class="price">335 جنيه</p>
+      <button onclick="addToCart('620 Diamond', 335)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 8 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="730 Diamond">
+      <h3>730 Diamond</h3>
+      <p class="price">405 جنيه</p>
+      <button onclick="addToCart('730 Diamond', 405)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 9 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="830 Diamond">
+      <h3>830 Diamond</h3>
+      <p class="price">430 جنيه</p>
+      <button onclick="addToCart('830 Diamond', 430)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 10 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="930 Diamond">
+      <h3>930 Diamond</h3>
+      <p class="price">490 جنيه</p>
+      <button onclick="addToCart('930 Diamond', 490)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 11 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1060 Diamond">
+      <h3>1060 Diamond</h3>
+      <p class="price">530 جنيه</p>
+      <button onclick="addToCart('1060 Diamond', 530)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 12 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1160 Diamond">
+      <h3>1160 Diamond</h3>
+      <p class="price">590 جنيه</p>
+      <button onclick="addToCart('1160 Diamond', 590)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 13 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1270 Diamond">
+      <h3>1270 Diamond</h3>
+      <p class="price">640 جنيه</p>
+      <button onclick="addToCart('1270 Diamond', 640)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 14 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1370 Diamond">
+      <h3>1370 Diamond</h3>
+      <p class="price">705 جنيه</p>
+      <button onclick="addToCart('1370 Diamond', 705)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 15 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1480 Diamond">
+      <h3>1480 Diamond</h3>
+      <p class="price">760 جنيه</p>
+      <button onclick="addToCart('1480 Diamond', 760)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 16 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1580 Diamond">
+      <h3>1580 Diamond</h3>
+      <p class="price">800 جنيه</p>
+      <button onclick="addToCart('1580 Diamond', 800)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 17 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1680 Diamond">
+      <h3>1680 Diamond</h3>
+      <p class="price">865 جنيه</p>
+      <button onclick="addToCart('1680 Diamond', 865)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 18 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1790 Diamond">
+      <h3>1790 Diamond</h3>
+      <p class="price">935 جنيه</p>
+      <button onclick="addToCart('1790 Diamond', 935)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 19 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1890 Diamond">
+      <h3>1890 Diamond</h3>
+      <p class="price">960 جنيه</p>
+      <button onclick="addToCart('1890 Diamond', 960)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 20 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="1990 Diamond">
+      <h3>1990 Diamond</h3>
+      <p class="price">1020 جنيه</p>
+      <button onclick="addToCart('1990 Diamond', 1020)">إضافة إلى العربة</button>
+    </div>
+    <!-- كارت 21 -->
+    <div class="charge-card">
+      <img src="103898.png" alt="2200 Diamond">
+      <h3>2200 Diamond</h3>
+      <p class="price">1060 جنيه</p>
+      <button onclick="addToCart('2200 Diamond', 1060)">إضافة إلى العربة</button>
     </div>
   </div>
 
-  <!-- النافذة المنبثقة (Modal) -->
-  <div class="modal-overlay" id="customModal">
-    <div class="modal-content">
-      <p id="modalMessage">تمت الإضافة بنجاح!</p>
+  <div id="customModal" class="modal-overlay">
+    <div class="modal-box">
+      <p id="modalMessage"></p>
       <div class="modal-buttons">
         <button class="modal-btn btn-continue" onclick="closeModal()">متابعة التسوق</button>
         <a href="cart.html" class="modal-btn btn-cart">عرض السلة</a>
@@ -199,21 +284,21 @@
     </div>
   </div>
 
-  <script>
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    function addToCart(productName, price) {
-      cart.push({ name: productName, price: price, game: 'Free Fire' });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      
-      document.getElementById('modalMessage').innerText = productName + " أضيفت للعربة بنجاح!";
-      document.getElementById('customModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('customModal').style.display = 'none';
-    }
-  </script>
-
+<script>
+function addToCart(packageName, price) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push({
+    name: packageName,
+    price: price,
+    game: 'فري فاير 🔥'
+  });
+  localStorage.setItem('cart', JSON.stringify(cart));
+  document.getElementById('modalMessage').innerText = packageName + ' أضيفت للعربة بنجاح!';
+  document.getElementById('customModal').style.display = 'flex';
+}
+function closeModal() {
+  document.getElementById('customModal').style.display = 'none';
+}
+</script>
 </body>
 </html>
