@@ -192,46 +192,81 @@
             margin: 30px 0;
         }
 
-        .top-ad-expandable {
-            background-color: #000;
-            text-align: center;
-            position: relative;
-            border-bottom: 2px solid #ff5e00;
-        }
-
-        .ad-content-wrapper img {
-            width: 100%;
-            max-height: 150px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .ad-controls {
-            background-color: #ff5e00;
-            padding: 5px;
-            cursor: pointer;
-        }
-
-        .expand-toggle {
-            color: white;
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-
-        .hidden-ad {
+        /* تنسيقات النافذة المنبثقة (Modal) */
+        .modal-overlay {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #1a1a24;
+            border: 2px solid #ff5e00;
+            border-radius: 16px;
+            padding: 25px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 94, 0, 0.3);
+            color: #ffffff;
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            flex: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-continue {
+            background-color: #2a2a3a;
+            color: #cccccc;
+            border: 1px solid #3a3a4a;
+        }
+
+        .btn-continue:hover {
+            background-color: #3a3a4a;
+            color: #ffffff;
+        }
+
+        .btn-cart {
+            background-color: #ff5e00;
+            color: #ffffff;
+        }
+
+        .btn-cart:hover {
+            background-color: #ff7b00;
         }
     </style>
 </head>
 <body>
-    <div class="top-ad-expandable">
-        <div class="ad-content-wrapper" id="topAdContent">
-            <img src="https://i.ibb.co/L89kY3y/pubg-banner.jpg" alt="إعلان">
-        </div>
-        <div class="ad-controls">
-            <span class="expand-toggle" onclick="toggleTopAd()">&#9650;</span>
-        </div>
-    </div>
 
     <header>
         <a href="cart.html" style="text-decoration: none; color: inherit;">
@@ -293,20 +328,31 @@
         </a>
     </div>
 
-    <script>
-        function toggleTopAd() {
-            const content = document.getElementById('topAdContent');
-            const toggleBtn = document.querySelector('.expand-toggle');
-            content.classList.toggle('hidden-ad');
-            toggleBtn.style.transform = content.classList.contains('hidden-ad') ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
+    <!-- النافذة المنبثقة (Modal) -->
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-content">
+            <p id="modalMessage">تمت إضافة المنتج إلى العربة بنجاح!</p>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-continue" onclick="closeModal()">متابعة التسوق</button>
+                <a href="cart.html" class="modal-btn btn-cart">التوجه إلى العربة</a>
+            </div>
+        </div>
+    </div>
 
+    <script>
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         function addToCart(productName, price) {
             cart.push({ name: productName, price: price });
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert(productName + " تم إضافتها للعربة!");
+            
+            // إظهار النافذة بدلاً من alert
+            document.getElementById('modalMessage').textContent = "تمت إضافة (" + productName + ") إلى العربة بنجاح!";
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('cartModal').style.display = 'none';
         }
     </script>
 </body>

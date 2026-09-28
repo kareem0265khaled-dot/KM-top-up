@@ -60,6 +60,56 @@
     .charge-card button:hover {
       background-color: #ff7b00;
     }
+
+    /* === ستايل الـ Modal === */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background-color: #1a1a24;
+      border: 1px solid #ff5e00;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      width: 85%;
+      max-width: 350px;
+      box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
+    }
+    .modal-content p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .modal-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-continue {
+      background-color: #2a2a3a;
+      color: #ffffff;
+    }
+    .btn-cart {
+      background-color: #ff5e00;
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
@@ -138,13 +188,31 @@
     </div>
   </div>
 
+  <!-- النافذة المنبثقة (Modal) -->
+  <div class="modal-overlay" id="customModal">
+    <div class="modal-content">
+      <p id="modalMessage">تمت الإضافة بنجاح!</p>
+      <div class="modal-buttons">
+        <button class="modal-btn btn-continue" onclick="closeModal()">متابعة التسوق</button>
+        <a href="cart.html" class="modal-btn btn-cart">عرض السلة</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function addToCart(productName, price) {
       cart.push({ name: productName, price: price });
       localStorage.setItem('cart', JSON.stringify(cart));
-      alert(productName + " تم إضافتها للعربة!");
+      
+      // إظهار النافذة بدلاً من alert
+      document.getElementById('modalMessage').innerText = productName + " أضيفت للعربة بنجاح!";
+      document.getElementById('customModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('customModal').style.display = 'none';
     }
   </script>
 
