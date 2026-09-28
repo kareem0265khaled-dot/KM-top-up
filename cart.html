@@ -70,6 +70,53 @@
       margin-top: 15px;
       cursor: pointer;
     }
+
+    /* === ستايل الـ Modal === */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background-color: #1a1a24;
+      border: 2px solid #ff5e00;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 10px 30px rgba(255, 94, 0, 0.3);
+    }
+    .modal-content p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+    .modal-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      background-color: #ff5e00;
+      color: #ffffff;
+      transition: 0.3s;
+    }
+    .modal-btn:hover {
+      background-color: #ff7b00;
+    }
   </style>
 </head>
 <body>
@@ -83,6 +130,14 @@
   <div class="total-section">
     الإجمالي: <span class="total-price" id="totalPrice">0 جنيه</span>
     <button class="checkout-btn" onclick="checkout()">إتمام الطلب</button>
+  </div>
+
+  <!-- النافذة المنبثقة (Modal) للتأكيد -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-content">
+      <p>تم إتمام الطلب بنجاح! سيتم تحويلك للواتساب لإتمام عملية الشحن.</p>
+      <a href="https://wa.me/201122511179" class="modal-btn" onclick="redirectToWhatsApp()">موافق</a>
+    </div>
   </div>
 
   <script>
@@ -128,9 +183,13 @@
         alert('العربة فارغة!');
         return;
       }
-      alert('تم إتمام الطلب بنجاح! سيتم تحويلك للواتساب.');
-      window.location.href = "https://wa.me/201122511179";
+      // إظهار النافذة بدلاً من alert القديم
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
 
+    function redirectToWhatsApp() {
+      document.getElementById('checkoutModal').style.display = 'none';
+      // التحويل لرابط الواتساب بيحصل أوتوماتيك من الرابط جوه الزرار
     }
 
     renderCart();
